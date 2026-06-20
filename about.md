@@ -6,4 +6,4 @@ permalink: /about/
 
 ## About
 
-Welcome
+Welcome to my project portfolio! Explore Projects [here]()
