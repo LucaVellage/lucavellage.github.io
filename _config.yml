@@ -28,3 +28,6 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+
+include:
+  - "caucasus-corridor-analysis/_app"
