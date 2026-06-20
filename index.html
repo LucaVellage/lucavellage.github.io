@@ -1,0 +1,24 @@
+---
+layout: default
+title: Projects
+---
+
+<section class="intro">
+  <h1>Your Name</h1>
+  <p>Data scientist / analyst. Selected projects below.</p>
+</section>
+
+<section class="project-grid">
+  {% assign projects = site.projects | sort: 'date' | reverse %}
+  {% for project in projects %}
+  <a class="project-card" href="{{ project.url | relative_url }}">
+    <div class="project-thumb">
+      <img src="{{ project.thumbnail | relative_url }}" alt="{{ project.title }}">
+    </div>
+    <div class="project-card-text">
+      <h2>{{ project.title }}</h2>
+      <p>{{ project.summary }}</p>
+    </div>
+  </a>
+  {% endfor %}
+</section>
