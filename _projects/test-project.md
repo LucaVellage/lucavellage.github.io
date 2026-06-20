@@ -2,7 +2,7 @@
 title: "Customer Churn Prediction"
 date: 2025-09-01
 summary: "Predicting churn using gradient boosting on transactional data."
-thumbnail: /assets/img/projects/churn-thumb.jpg
+thumbnail: /assets/img/projects/test-thumbnail.png
 tags: [python, ml, classification]
 link: https://github.com/yourusername/churn-prediction
 ---
