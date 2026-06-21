@@ -30,4 +30,4 @@ exclude:
   - Gemfile.lock
 
 include:
-  - "caucasus-corridor-analysis/_app"
+  - "caucasus-corridor-analysis/_app/"
