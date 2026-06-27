@@ -1,7 +1,7 @@
 ---
 ---
 :root {
-  --bg: #fafafa;
+  --bg: #ffffff;
   --text: #1a1a1a;
   --muted: #6b6b6b;
   --border: #e6e6e6;
@@ -91,6 +91,7 @@ main {
   overflow: hidden;
   border-radius: 6px;
   background: #eee;
+  border: 1px solid var(--border);
 }
 
 .project-thumb img {

@@ -11,7 +11,12 @@ title: Projects
 <section class="project-grid">
   {% assign projects = site.projects | sort: 'date' | reverse %}
   {% for project in projects %}
-  <a class="project-card" href="{{ project.url | relative_url }}">
+  {% if project.direct_link %}
+    {% assign card_href = project.link %}
+  {% else %}
+    {% assign card_href = project.url | relative_url %}
+  {% endif %}
+  <a class="project-card" href="{{ card_href }}">
     <div class="project-thumb">
       <img src="{{ project.thumbnail | relative_url }}" alt="{{ project.title }}">
     </div>
