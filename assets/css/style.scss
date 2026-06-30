@@ -158,3 +158,22 @@ main {
   .site-header nav { margin-top: 0.5rem; }
   .site-header nav a { margin-left: 0; margin-right: 1rem; }
 }
+
+.back-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+}
+
+.back-bar a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  transition: color 0.15s ease;
+}
+
+.back-bar a:hover {
+  color: var(--text);
+}
