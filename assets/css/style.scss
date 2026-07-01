@@ -6,7 +6,7 @@
   --muted: #6b6b6b;
   --border: #e6e6e6;
   --accent: #1a1a1a;
-  --max-width: 1200px;
+  --max-width: 1600px;
 }
 
 * { box-sizing: border-box; }
@@ -81,7 +81,7 @@ main {
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
+  gap: 3.5rem;
 }
 
 .project-card { display: block; }
