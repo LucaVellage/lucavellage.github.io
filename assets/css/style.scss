@@ -177,3 +177,30 @@ main {
 .back-bar a:hover {
   color: var(--text);
 }
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.15s ease;
+
+    &:hover { color: var(--text); }
+  }
+
+  img {
+    opacity: 0.6;
+    transition: opacity 0.15s ease;
+  }
+
+  a:hover img {
+    opacity: 1;
+  }
+}
