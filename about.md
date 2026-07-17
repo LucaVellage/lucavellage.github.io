@@ -17,11 +17,11 @@ permalink: /about/
 
 <div class="social-links">
   <a href="https://github.com/LucaVellage" target="_blank" rel="noopener">
-    <img src="/assets/img/github.svg" alt="GitHub" width="20" height="20">
-    GitHub
+    <img src="/assets/img/github.svg" alt="lucavellage ↗" width="20" height="20">
+    LucaVellage ↗
   </a>
   <a href="https://linkedin.com/in/lucavellage" target="_blank" rel="noopener">
-    <img src="/assets/img/linkedin.svg" alt="LinkedIn" width="20" height="20">
-    LinkedIn
+    <img src="/assets/img/linkedin.svg" alt="lucavellage ↗" width="20" height="20">
+    LucaVellage ↗
   </a>
 </div>
