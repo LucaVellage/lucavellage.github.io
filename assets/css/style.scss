@@ -5,7 +5,7 @@
   --text: #1a1a1a;
   --muted: #6b6b6b;
   --border: #e6e6e6;
-  --accent: #8f3220;
+  --accent: #000000;
   --max-width: 1600px;
 }
 
@@ -84,7 +84,11 @@ main {
   gap: 3.5rem;
 }
 
-.project-card { display: block; }
+.project-card {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+}
 
 .project-thumb {
   aspect-ratio: 3 / 2;
@@ -102,15 +106,24 @@ main {
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.project-card:hover .project-thumb img { 
-    transform: scale(1.04); 
-    opacity: 0.92;
+.project-card:hover .project-thumb img {
+  transform: scale(1.04);
+  opacity: 0.92;
+}
+
+.project-card h2 {
+  color: var(--text);
 }
 
 .project-card-text h2 {
   font-size: 1.05rem;
   margin: 1rem 0 0.25rem;
   font-weight: 600;
+}
+
+.project-card p {
+  color: var(--muted);
+  text-decoration: none;
 }
 
 .project-card-text p {
@@ -154,7 +167,7 @@ main {
 }
 
 main a {
-  color: var(--accent);
+  color: var(--text);
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: opacity 0.15s ease;
@@ -183,9 +196,7 @@ main a {
   transition: color 0.15s ease;
 }
 
-.back-bar a:hover {
-  color: var(--text);
-}
+.back-bar a:hover { color: var(--text); }
 
 .social-links {
   display: flex;
