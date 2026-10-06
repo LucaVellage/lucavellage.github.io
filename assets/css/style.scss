@@ -80,7 +80,7 @@ main {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
   gap: 3.5rem;
 }
 
@@ -157,6 +157,30 @@ main {
   border-bottom: 1px solid var(--text);
 }
 
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.45rem;
+  line-height: 1.5;
+}
+
+.tag-lang {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+
 .site-footer {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -179,6 +203,7 @@ main a {
   .site-header { flex-direction: column; align-items: flex-start; }
   .site-header nav { margin-top: 0.5rem; }
   .site-header nav a { margin-left: 0; margin-right: 1rem; }
+  .project-grid { gap: 2.5rem; }
 }
 
 .back-bar {

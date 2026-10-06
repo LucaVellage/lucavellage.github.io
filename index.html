@@ -19,10 +19,16 @@ title: Projects
     <div class="project-thumb">
       <img src="{{ project.thumbnail | relative_url }}" alt="{{ project.title }}">
     </div>
-    <div class="project-card-text">
-      <h2>{{ project.title }}</h2>
-      <p>{{ project.summary }}</p>
+   <div class="project-card-text">
+    <div class="project-tags">
+      {% if project.language %}<span class="tag tag-lang">{{ project.language }}</span>{% endif %}
+      {% if project.category %}<span class="tag">{{ project.category }}</span>{% endif %}
+      {% if project.topic %}<span class="tag">{{ project.topic }}</span>{% endif %}
     </div>
+    <h2>{{ project.title }}</h2>
+    <p>{{ project.summary }}</p>
+  </div>
+
   </a>
   {% endfor %}
 </section>
