@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Titel des Artikels</title>
+  <script>
+    // Beim Neuladen immer oben starten
+    history.scrollRestoration = "manual";
+    window.addEventListener("load", function () {
+        window.scrollTo(0, 0);
+    });
+    </script>
+  <meta name="description" content="Analyse des gemeinwohlorientierten Wohnungsbaus in Berlin 2025">
+
+  <style>
+    /* =========================================================
+       1. Farben & Grundwerte
+       ========================================================= */
+    :root {
+      --bg: #ffffff;
+      --text: #181818;
+      --muted: #5f5f5f;
+      --border: #e6ddd5;
+      --accent: #c8642a;
+
+      --width-text: 780px;   /* Breite für Fließtext */
+      --width-wide: 1100px;  /* Breite für große Karten */
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* =========================================================
+       2. Layout-Container
+       ========================================================= */
+    .container {
+      max-width: var(--width-text);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Breiterer Container, z. B. für große Karten */
+    .container--wide {
+      max-width: var(--width-wide);
+    }
+
+    /* =========================================================
+       3. Intro (Kopfbereich)
+       ========================================================= */
+    .intro {
+      padding: 5.5rem 0 2.5rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1rem;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    h1 {
+      margin: 0 0 1.5rem;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(2.2rem, 4.8vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .lede {
+      margin: 0;
+      font-size: 1.15rem;
+      line-height: 2.15;
+      color: #1f1f1f;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    /* Kurzer orangefarbener Strich unter dem Lead */
+    .lede::after {
+      content: "";
+      display: block;
+      width: 96px;
+      height: 3px;
+      margin-top: 1.25rem;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+
+    .byline {
+      margin: 0.75rem 0 1.75rem;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+      color: #999;
+    }
+
+    /* =========================================================
+       4. Fließtext
+       ========================================================= */
+    .paragraph {
+      margin: 0 0 1.35rem;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--muted);
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    h2 {
+      margin: 3rem 0 1rem;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(200, 100, 42, 0.28);
+    }
+
+    a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    /* =========================================================
+       5. Datawrapper-Karten
+       ========================================================= */
+    .chart {
+      margin: 3rem auto;
+    }
+
+    .chart iframe {
+      display: block;
+      width: 100%;
+      border: none;
+    }
+
+    /* =========================================================
+       6. Methodik (aufklappbar)
+       ========================================================= */
+    .outro {
+      margin-top: 2.5rem;
+      padding: 3rem 0 5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .methodology summary {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      list-style: none;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* Standard-Pfeil des Browsers ausblenden (Safari) */
+    .methodology summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .methodology summary::after {
+      content: "▸";
+      font-size: 0.7rem;
+      transition: transform 0.2s ease;
+    }
+
+    .methodology[open] summary::after {
+      transform: rotate(90deg);
+    }
+
+    .methodology-body {
+      padding-top: 1.25rem;
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    .methodology-body p {
+      margin: 0 0 1rem;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+   /* =========================================================
+   Scrollytelling
+   ========================================================= */
+    .scrolly {
+    --map-height: 750px;   /* Startwert, wird per Skript gemessen */
+    position: relative;
+    max-width: var(--width-wide);
+    margin: 5rem auto 5rem;   /* oben: Abstand zum Text davor, unten: 0 */
+    padding: 0 1.5rem;
+    }
+
+    /* Karte bleibt beim Scrollen stehen, mittig im Bildschirm */
+    .scrolly-graphic {
+    position: sticky;
+    top: max(1rem, calc(50vh - var(--map-height) / 2));
+    margin: 0;
+    }
+
+    /* Karten übereinanderlegen */
+    .scrolly-slides {
+    display: grid;
+    width: 100%;
+    }
+
+    .scrolly-slides iframe {
+    grid-area: 1 / 1;
+    width: 100%;
+    border: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s;
+    }
+
+    .scrolly-slides iframe.is-visible {
+    opacity: 1;
+    visibility: visible;
+    }
+
+    /* Textkästen scrollen über die Karte */
+    .scrolly-steps {
+    position: relative;
+    pointer-events: none;  /* Karte bleibt bedienbar (Tooltips) */
+    }
+
+    .step {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    }
+
+    /* Letzter Schritt: Textkasten scrollt komplett raus, erst dann bewegt sich die Karte */
+    .step:last-child {
+    min-height: 0;
+    padding-top: 50vh;
+    padding-bottom: calc(50vh + var(--map-height) / 2);
+    }
+
+    .step-box {
+    max-width: 380px;
+    margin-left: auto;                      /* Kasten rechts */
+    padding: 1.4rem 1.6rem;
+    background: rgba(255, 255, 255, 0.894);
+    backdrop-filter: blur(8px);             /* Karte dahinter leicht unscharf */
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    box-shadow: 0 8px 30px rgba(24, 24, 24, 0.12);
+    pointer-events: auto;
+    }
+
+    .step-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #2b2b2b;
+    text-align: left;                       /* kein Blocksatz in schmalen Kästen */
+    }
+
+    .step-box p + p {
+    margin-top: 0.75rem;
+    }
+
+    /* Hervorhebungen im Kasten, z. B. <strong>Georgien</strong> */
+    .step-box strong {
+    color: var(--text);
+    font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+    .scrolly {
+        padding: 0 1.1rem;
+    }
+
+    .step-box {
+        max-width: none;
+        width: 100%;
+    }
+    }
+
+    /* Abstand zwischen Scrollytelling und folgendem Text */
+    .scrolly + * {
+    margin-top: 2rem;
+    }
+    /* Aufklappbares Diagramm */
+    .expand {
+    margin-top: -1.5rem; /* rückt näher an das Diagramm darüber */
+    margin-bottom: 3rem;
+    }
+
+    .expand summary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    list-style: none;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    }
+
+    .expand summary::-webkit-details-marker {
+    display: none;
+    }
+
+    .expand summary::after {
+    content: "▸";
+    font-size: 0.7rem;
+    transition: transform 0.2s ease;
+    }
+
+    .expand[open] summary::after {
+    transform: rotate(90deg);
+    }
+
+    .expand .chart {
+    margin-top: 1.5rem;
+    }
+
+    /* =========================================================
+    Sources
+       ========================================================= */
+
+    .sources {
+    margin: 0;
+    padding-left: 1.1rem;
+    }
+
+    .sources li {
+    margin-bottom: 0.6rem;
+    }
+
+    /* Links: orange und unterstrichen, überall auf der Seite */
+    a,
+    .paragraph a,
+    .step-box a,
+    .methodology-body a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    border-bottom: none;
+    }
+
+    a:hover {
+    text-decoration-thickness: 2px;
+    }
+    /* =========================================================
+       Mobile
+       ========================================================= */
+    @media (max-width: 767px) {
+      .container {
+        padding: 0 1.1rem;
+      }
+
+      .intro {
+        padding: 3rem 0 2rem;
+      }
+
+      h1 {
+        font-size: clamp(1.9rem, 8vw, 2.6rem);
+        letter-spacing: -0.03em;
+      }
+
+      .lede {
+        font-size: 1rem;
+        line-height: 1.85;
+      }
+
+      .outro {
+        margin-top: 1.5rem;
+        padding: 2rem 0 3.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===================== INTRO ===================== -->
+  <header class="container">
+    <section class="intro">
+      <span class="eyebrow">Berlin · Wohnungspolitik · Data</span>
+      <h1>Gemeinwohl wohnt am Stadtrand </h1>
+      <p class="lede">Der Berliner Senat will mehr gemeinwohlorientiertes Wohnen in der ganzen Stadt, doch der Bestand tümmelt sich in den Außenbezirken. 
+        In jedem dritten dicht bewohnten Berliner Viertel gehören gemeinwohlorientierten Eigentümern sogar weniger als ein Zehntel des Bodens. 
+        Warum die Geschichte der Stadt einer besseren räumlichen Verteilung im Weg steht. </p>
+      <p class="byline">Luca Vellage · 5. Oktober 2026</p>
+    </section>
+  </header>
+  <main>
+    <!-- ===================== TEXT ===================== -->
+    <div class="container">
+      <p class="paragraph">Wer rund um den Helmholtzplatz eine Wohnung sucht, bewirbt sich fast ausschließlich bei privaten Vermietern. Nur wenige Quadratmeter des Wohnbodens in diesem Kiez gehören städtischen Gesellschaften oder Genossenschaften und das hat seinen Preis: In den vergangenen fünf Jahren sind die <a href="https://interaktiv.tagesspiegel.de/lab/berlin-mieten-kiez-ranking-karte-2026/" target="_blank">Angebotsmieten am Helmholtzplatz</a> um 69% gestiegen und liegen 2025 bei knapp 22€ pro Quadratmeter. Unweit von hier, ebenfalls in Pankow, liegt die Michelangelostraße. Ein Kiez in dem 84% der Wohnbaufläche in gemeinwohlorientierter Hand liegen, aufgeteilt auf städtische Gesellschaften und Genossenschaften. </p>
+      <p class="paragraph">Wohnungen von gemeinwohlorientierten Vermietern tauchen in den Angebotsmieten kaum auf, da diese vor allem den privaten Markt abbilden. Dennoch wirken sie sich über den Mietspiegel auf die Mieten in der ganzen Stadt aus. Gemeinwohlorientierte Vermieter verzichten auf Gewinnmaximierung und verlangen im Kern nur so viel, wie Betrieb, Instandhaltung und Neubau kosten. Ihre Mieten liegen daher in der Regel unter dem Marktniveau. Und weil sie in den Mietspiegel einfließen, drücken sie die ortsüblichen Vergleichsmieten, an die auch private Vermieter bei Mieterhöhungen und Neuvermietungen gebunden sind.</p>
+      <p class="paragraph">Mit diesem Ziel im Blick unterzeichneten der vorangegangene Berliner Senat und die sieben landeseigenen Wohnungsunternehmen im Juni 2026 die <a href="https://www.wbm.de/presse/aktuelles/beitrag/roadmap-20-in-berlin-unterzeichnet-auf-dem-weg-zu-500000-landeseigenen-wohnungen/" target="_blank">"Roadmap 2.0"</a>. So soll der aktuellen Bestand von rund <a href="https://www.berliner-zeitung.de/article/mehr-wohnraum-fuer-berlin-landeseigene-wollen-bestand-um-56000-wohnungen-erweitern-10066509" target="_blank">404.000 Wohnungen bis 2035 auf 465.000 Wohnungen</a> wachsen und somit zu einem bezahlbaren zu Hause für 120.000 Berlinerinnen und Berliner werden. </p>
+    </div>
+    
+    <!-- ===================== BALKENDIAGRAMM ===================== -->
+    <figure class="container chart">
+    <iframe
+        title="Titel des Balkendiagramms"
+        aria-label="Balkendiagramm"
+        id="datawrapper-chart-ZZZZZ"
+        src="https://datawrapper.dwcdn.net/FsJlq/1/"
+        scrolling="no"
+        height="400"
+        data-external="1">
+    </iframe>
+    </figure>
+
+    <!-- ===================== AUFKLAPPBARES DIAGRAMM ===================== -->
+    <details class="container expand">
+    <summary>Davon</summary>
+
+    <figure class="chart">
+        <iframe
+        title="Titel des zweiten Balkendiagramms"
+        aria-label="Balkendiagramm"
+        id="datawrapper-chart-WWWWW"
+        src="https://datawrapper.dwcdn.net/SIzoB/1/"
+        scrolling="no"
+        height="400"
+        data-external="1">
+        </iframe>
+    </figure>
+    </details>
+
+    <div class="container">  
+      <p class="paragraph">Schon heute gehört den Landeseigenen Wohnungsgesellschaften Berlinovo, Degewo, Gesobau, Gewobag, Howoge und WBM etwa jede fünfte Berliner Wohnung. Auf dem Stadtplan nehmen sie dennoch wenig Raum ein. Nur 8.5% des Berliner Wohnbodens sind in ihrem Besitz, zusammen mit den Genossenschaften und weiteren Eigentümern wie etwa Kirche, Land oder Bund sind es 18 Prozent. Wer beispielsweise an das Märkische Viertel denkt, wundert sich über diese Zahlen kaum. In der Reinickendorfer Großsiedlung liegen 93 Prozent des Wohnbodens in gemeinwohlorientierter Hand. Rund 41.000 Menschen leben hier dicht an dicht in Hochhäusern und langen Wohnzeilen, weit außerhalb des Stadtzentrums. Doch Siedlungen wie diese sind keine Ausnahme. Gemeinwohlorientiertes Eigentum ballt sich in Berlin vor allem in den großen Wohnsiedlungen der Randbezirke. Wie deutlich, zeigt ein Blick auf die Stadtkarte.
+
+</p>
+    </div>
+
+    <!-- ===================== SCROLLYTELLING ===================== -->
+    <section class="scrolly">
+    <figure class="scrolly-graphic">
+        <div class="scrolly-slides">
+        <iframe class="is-visible" title="Karte 1" id="datawrapper-chart-XXXXX"
+            src="https://datawrapper.dwcdn.net/WtP18/1/"
+            scrolling="no" height="500" data-external="1"></iframe>
+
+        <iframe title="Karte 2" id="datawrapper-chart-YYYYY"
+            src="https://datawrapper.dwcdn.net/KDpXD/1/"
+            scrolling="no" height="500" data-external="1"></iframe>
+        </div>
+    </figure>
+
+    <div class="scrolly-steps">
+        <div class="step" data-slide="0">
+        <div class="step-box">
+            <p>Jede Fläche auf der Karte ist ein Berliner Planungsraum, also ein Kiez. Die Farbe zeigt, wie viel Prozent des Wohnbodens dort städtischen Gesellschaften, Genossenschaften und anderen gemeinwohlorientierten Eigentümern gehören. Je dunkler, desto größer ist ihr Anteil. 
+            <br><br>
+            Bewege Dich mit der Maus über den Planungsraum oder klicke ihn an, um zu sehen, wem der Boden dort gehört.</p>
+        </div>
+        </div>
+
+        <div class="step" data-slide="1">
+        <div class="step-box">
+            <p>Nicht überall ist ein niedriger Anteil überraschend. Schraffiert sind Planungsräume, in denen weniger als 70 Menschen auf einem Hektar Wohnbaufläche leben, das sind meist Gebiete mit Einfamilienhäusern. 
+            <br><br>
+            Blendet man diese aus, wird das Muster deutlicher. Die dunkelblauen Flächen ballen sich in wenigen Großsiedlungen, allen voran Lichtenberg, Treptow-Köpenick und Reinickendorf. Insgesamt vereint ein Zehntel aller Planungsräume 35% des gemeinwohlorientierten Wohnbodens der Stadt. Dort leben etwa eine halbe Million Berlinerinnen und Berliner. </p>
+        </div>
+        </div>
+    </div>
+
+
+    </section>
+
+    <!-- ===================== TEXT ===================== -->
+    <div class="container">
+  
+      <p class="paragraph">Dieses Muster ist ein Erbe der Berliner Baugeschichte. Die großen Siedlungen der Sechziger- und Siebzigerjahre wurden im Westen überwiegend von gemeinnützigen und landeseigenen Wohnungsbaugesellschaften errichtet.Im <a href="https://www.berlin.de/sen/stadtentwicklung/quartiersentwicklung/staedtebaufoerderung/nachhaltige-erneuerung/foerdergebiete/maerkisches-viertel/" target="_blank">Märkische Viertel</a> etwa gehören die meisten Wohnungen bis heute der landeseigenen Gesobau. Im Osten Berlins entstanden die Plattenbausiedlungen im Zuge des staatlichen Wohnungsbaus der DDR. Nach der Wende wurde dieser volkseigene Bestand in <a href="https://www.bundestag.de/resource/blob/411786/39a606ab924ddd68206f404cd68f5cb2/WD-1-059-07-pdf.pdf" target="_blank">kommunale Wohnungsgesellschaften</a> überführt, die Siedlungen der Arbeiterwohnungsbaugenossenschaften blieben genossenschaftlich. Die Altbauviertel der Innenstadt dagegen gehören vielfach Privatleuten, im Osten wurden viele Häuser nach 1990 an frühere Eigentümer zurückgegeben, saniert und verkauft. Hinzu kommt, dass Berlin selbst große Bestände privatisiert hat, 1998 die Gehag und 2004 die GSW, damals die größte landeseigene Wohnungsbaugesellschaft.  </p>
+    </div>
+
+
+    <!-- ===================== TEXT ===================== -->
+    <div class="container">
+      <p class="paragraph">Für die Wohnungspolitik heißt das: Gerade in den dicht bewohnten Vierteln der Innenstadt, in denen die Angebotsmieten besonders hoch sind, besitzen gemeinwohlorientierte Eigentümer kaum Boden. Ändern soll das vor allem der Neubau, laut <a href="https://www.berlin.de/sen/stadtentwicklung/planung/stadtentwicklungsplaene/step-wohnen-2040/" target="_blank">Stadtentwicklungsplan Wohnen 2040</a> soll möglichst jede zweite neue Wohnung gemeinwohlorientiert entstehen, verteilt auf die ganze Stadt. Den größten Teil davon bauen die landeseigenen Gesellschaften, und deren Planung zeichnet ein anderes Bild. Laut einem <a href="https://www.berlin.de/rbmskzl/aktuelles/pressemitteilungen/2024/pressemitteilung.1473923.php" target="_blank">Bericht des Senats über die Neubauprojekte der Landeseigenen von 2024</a> sollen fast zwei Drittel ihrer geplanten Wohnungen in nur vier Bezirken im Osten der Stadt, in Lichtenberg, Pankow, Marzahn-Hellersdorf und Treptow-Köpenick entstehen. Allein jede fünfte entfällt auf Lichtenberg, wo gemeinwohlorientierten Eigentümern schon heute 39 Prozent des Wohnbodens gehören.</p>
+    </div>
+
+    <!-- ===================== TEXT ===================== -->
+    <div class="container">
+      <p class="paragraph"><a href="https://www.berlin.de/rbmskzl/aktuelles/pressemitteilungen/2025/pressemitteilung.1590906.php" target="_blank">Bausenator Christian Gaebler sagt</a>, bezahlbare Wohnungen „in allen Teilen der Stadt" zu bauen, werde konsequent weiterverfolgt. Doch der Neubau zeichnet die Karte der gemeinwohlorientierten Eigentümer nicht neu, er malt die blauen Flächen nach. Wo Berlin den Boden schon besitzt, kommt mehr hinzu und wo er fehlt, bleibt es dabei.</p>
+    </div>
+
+
+
+  </main>
+
+  <!-- ===================== METHODIK ===================== -->
+  <footer class="container">
+    <section class="outro">
+      <details id="methodology" class="methodology">
+        <summary>Methodik</summary>
+        <div class="methodology-body">
+          <p>Grundlage für die Analyse sind die Daten der <a href="https://www.berlin.de/sen/wohnen/service/berliner-wohnungsmarkt/eigentuemerstruktur-in-berlin/" target="_blank">Eigentümerstruktur in Berlin</a> der Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen (Stand 2025). Sie zeigen für 537 Berliner Planungsräume an, welcher Anteil der Wohnbaufläche, einschließlich Flächen gemischter Nutzung, welcher Eigentümergruppe gehört. Die Daten beschreiben also den Boden, nicht die Zahl der Wohnungen. Flächen von Wohnungseigentümergemeinschaften zählen zu den natürlichen Personen. Als gemeinwohlorientiert gelten nach Definition des Senats landeseigene Wohnungsbaugesellschaften, Genossenschaften sowie Kirche, Bund, andere Bundesländer und das Land Berlin. Werte für ganz Berlin und die Bezirke wurden nach der Wohnbaufläche der Planungsräume gewichtet. Um Einfamilienhausgebiete kenntlich zu machen, wurde die Einwohnerzahl jedes Planungsraums (Amt für Statistik Berlin-Brandenburg, Stand 31.12.2025) durch seine Wohnbaufläche geteilt. Planungsräume mit weniger als 70 Einwohnerinnen und Einwohnern je Hektar gelten als locker bebaut. Die Schwelle orientiert sich am Berliner Umweltatlas.</p>
+          <p>Ein Vergleich der Eigentümerstruktur mit früheren Jahren wurde bewusst nicht gezogen, weil die Senatsverwaltung die Zuordnung der Eigentümer 2025 überarbeitet hat. </p>
+        </div>
+      </details>
+    </section>
+  </footer>
+
+
+  <!-- Datawrapper-Skript: passt die Höhe aller Karten automatisch an.
+       Wird nur EINMAL benötigt, egal wie viele Karten eingebunden sind. -->
+  <script>
+    window.addEventListener("message", function (event) {
+      var heights = event.data["datawrapper-height"];
+      if (heights === undefined) return;
+
+      var iframes = document.querySelectorAll("iframe");
+      for (var chartId in heights) {
+        for (var i = 0; i < iframes.length; i++) {
+          if (iframes[i].contentWindow === event.source) {
+            iframes[i].style.height = heights[chartId] + "px";
+          }
+        }
+      }
+    });
+  </script>
+
+<script>
+  // Scrollytelling
+  document.querySelectorAll(".scrolly").forEach(function (scrolly) {
+    var graphic = scrolly.querySelector(".scrolly-graphic");
+    var slides = scrolly.querySelectorAll(".scrolly-slides iframe");
+    var steps = scrolly.querySelectorAll(".step");
+
+    // 1. Karte wechseln, wenn ein Textkasten die Bildschirmmitte erreicht
+    function show(index) {
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].classList.toggle("is-visible", i === index);
+      }
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          show(Number(entry.target.dataset.slide));
+        }
+      });
+    }, { rootMargin: "-50% 0px -50% 0px" });
+
+    steps.forEach(function (step) {
+      observer.observe(step);
+    });
+
+    // 2. Kartenhöhe messen und als --map-height bereitstellen
+    new ResizeObserver(function () {
+      scrolly.style.setProperty("--map-height", graphic.offsetHeight + "px");
+    }).observe(graphic);
+  });
+</script>
+
+</body>
+</html>
