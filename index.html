@@ -23,7 +23,7 @@ title: Projects
     <div class="project-tags">
       {% if project.language %}<span class="tag tag-lang">{{ project.language }}</span>{% endif %}
       {% if project.category %}<span class="tag">{{ project.category }}</span>{% endif %}
-      {% if project.topic %}<span class="tag">{{ project.topic }}</span>{% endif %}
+      {% for t in project.topic %}<span class="tag">{{ t }}</span>{% endfor %}
     </div>
     <h2>{{ project.title }}</h2>
     <p>{{ project.summary }}</p>

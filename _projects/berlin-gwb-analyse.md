@@ -6,4 +6,7 @@ thumbnail: /assets/img/projects/berlin-gwb-analyse.webp
 link: /berlin-gwb-analyse/
 layout: project
 direct_link: true
+language: DE
+category: Analysis
+topic: [Housing]
 ---
