@@ -6,4 +6,7 @@ thumbnail: /assets/img/projects/gnss-interference-analysis.webp
 link: /gnss-interference-analysis/
 layout: project
 direct_link: true
+language: EN
+category: Analysis
+topic: [GNSS, Conflict]
 ---

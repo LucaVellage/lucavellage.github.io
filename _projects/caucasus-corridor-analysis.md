@@ -8,5 +8,5 @@ layout: project
 direct_link: true
 language: EN
 category: Analysis
-topic: Aviation
+topic: [GNSS, Conflict]
 ---
