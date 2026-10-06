@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gemeinwohl wohnt am Stadtrand</title>
   <script>
-    // Beim Neuladen immer oben starten
     history.scrollRestoration = "manual";
     window.addEventListener("load", function () {
         window.scrollTo(0, 0);
@@ -90,7 +89,6 @@
       hyphens: auto;
     }
 
-    /* Kurzer orangefarbener Strich unter dem Lead */
     .lede::after {
       content: "";
       display: block;
@@ -207,7 +205,7 @@
    Scrollytelling
    ========================================================= */
     .scrolly {
-    --map-height: 750px;   /* Startwert, wird per Skript gemessen */
+    --map-height: 750px;  
     position: relative;
     max-width: var(--width-wide);
     margin: 5rem auto 5rem;   /* oben: Abstand zum Text davor, unten: 0 */
@@ -244,7 +242,7 @@
     /* Textkästen scrollen über die Karte */
     .scrolly-steps {
     position: relative;
-    pointer-events: none;  /* Karte bleibt bedienbar (Tooltips) */
+    pointer-events: none; 
     }
 
     .step {
@@ -261,11 +259,11 @@
     }
 
     .step-box {
-    max-width: 380px;
-    margin-left: auto;                      /* Kasten rechts */
-    padding: 1.4rem 1.6rem;
-    background: rgba(255, 255, 255, 0.894);
-    backdrop-filter: blur(8px);             /* Karte dahinter leicht unscharf */
+    max-width: 300px;
+    margin-left: auto; /* Kasten rechts */
+    padding: 1.1rem 1.3rem;
+    background: rgba(255, 255, 255, 0.731);
+    backdrop-filter: blur(8px);            
     border-left: 3px solid var(--accent);
     border-radius: 4px;
     box-shadow: 0 8px 30px rgba(24, 24, 24, 0.12);
@@ -277,7 +275,7 @@
     font-size: 0.95rem;
     line-height: 1.75;
     color: #2b2b2b;
-    text-align: left;                       /* kein Blocksatz in schmalen Kästen */
+    text-align: left; /* kein Blocksatz in schmalen Kästen */
     }
 
     .step-box p + p {
@@ -346,7 +344,7 @@
 
     /* =========================================================
     Sources
-       ========================================================= */
+      ========================================================= */
 
     .sources {
     margin: 0;
@@ -357,7 +355,6 @@
     margin-bottom: 0.6rem;
     }
 
-    /* Links: orange und unterstrichen, überall auf der Seite */
     a,
     .paragraph a,
     .step-box a,
@@ -372,6 +369,31 @@
     a:hover {
     text-decoration-thickness: 2px;
     }
+
+    /* Bildnachweis & Lizenz */
+    .credits {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: #999;
+    }
+
+    .credits p {
+      margin: 0 0 0.5rem;
+    }
+
+    .credits a {
+      color: #666;
+      text-decoration-color: #bbb;
+    }
+
+    .credits a:hover {
+      color: #333;
+      text-decoration-color: #333;
+    }
+
     /* =========================================================
        Mobile
        ========================================================= */
@@ -399,14 +421,14 @@
         padding: 2rem 0 3.5rem;
       }
     }
+
   </style>
 </head>
 
 <body>
-  <body>
-  <div style="position:sticky;top:0;z-index:999;background:#fff;border-bottom:1px solid #e6e6e6;padding:1rem 1.5rem;font-family:-apple-system,sans-serif;">
-    <a href="https://lucavellage.github.io/" style="color:#6b6b6b;font-size:0.9rem;text-decoration:none;">← Back to portfolio</a>
-  </div>
+<div style="position:sticky;top:0;z-index:999;background:#fff;border-bottom:1px solid #e6e6e6;padding:1rem 1.5rem;font-family:-apple-system,sans-serif;">
+  <a href="https://lucavellage.github.io/" style="color:#6b6b6b;font-size:0.9rem;text-decoration:none;">← Back to portfolio</a>
+</div>
 
   <!-- ===================== INTRO ===================== -->
   <header class="container">
@@ -456,7 +478,7 @@
     </details>
 
     <div class="container">  
-      <p class="paragraph">Schon heute gehört den landeseigenen Wohnungsgesellschaften Berlinovo, Degewo, Gesobau, Gewobag, Howoge und WBM etwa jede fünfte Berliner Wohnung. Auf dem Stadtplan nehmen sie dennoch wenig Raum ein. Nur 8.5 Prozent des Berliner Wohnbodens sind in ihrem Besitz, zusammen mit den Genossenschaften und weiteren Eigentümern wie etwa Kirche, Land oder Bund sind es 18 Prozent. Wer beispielsweise an das Märkische Viertel denkt, wundert sich über diese Zahlen kaum. In der Reinickendorfer Großsiedlung liegen 93 Prozent des Wohnbodens in gemeinwohlorientierter Hand. Rund 41.000 Menschen leben hier dicht an dicht in Hochhäusern und langen Wohnzeilen, weit außerhalb des Stadtzentrums. Doch Siedlungen wie diese sind keine Ausnahme. Gemeinwohlorientiertes Eigentum ballt sich in Berlin vor allem in den großen Wohnsiedlungen der Randbezirke. Wie deutlich, zeigt ein Blick auf die Stadtkarte.
+      <p class="paragraph">Schon heute gehört den landeseigenen Wohnungsgesellschaften Berlinovo, Degewo, Gesobau, Gewobag, Howoge und WBM etwa jede fünfte Berliner Wohnung. Auf dem Stadtplan nehmen sie dennoch wenig Raum ein. Nur 8,5 Prozent des Berliner Wohnbodens sind in ihrem Besitz, zusammen mit den Genossenschaften und weiteren Eigentümern wie etwa Kirche, Land oder Bund sind es 18 Prozent. Wer beispielsweise an das Märkische Viertel denkt, wundert sich über diese Zahlen kaum. In der Reinickendorfer Großsiedlung liegen 93 Prozent des Wohnbodens in gemeinwohlorientierter Hand. Rund 41.000 Menschen leben hier dicht an dicht in Hochhäusern und langen Wohnzeilen, weit außerhalb des Stadtzentrums. Doch Siedlungen wie diese sind keine Ausnahme. Gemeinwohlorientiertes Eigentum ballt sich in Berlin vor allem in den großen Wohnsiedlungen der Randbezirke. Wie deutlich, zeigt ein Blick auf die Stadtkarte.
 
 </p>
     </div>
@@ -502,18 +524,13 @@
       <p class="paragraph">Dieses Muster ist ein Erbe der Berliner Baugeschichte. Die großen Siedlungen der Sechziger- und Siebzigerjahre wurden im Westen überwiegend von gemeinnützigen und landeseigenen Wohnungsbaugesellschaften errichtet. Im <a href="https://www.berlin.de/sen/stadtentwicklung/quartiersentwicklung/staedtebaufoerderung/nachhaltige-erneuerung/foerdergebiete/maerkisches-viertel/" target="_blank">Märkischen Viertel</a> etwa gehören die meisten Wohnungen bis heute der landeseigenen Gesobau. Im Osten Berlins entstanden die Plattenbausiedlungen im Zuge des staatlichen Wohnungsbaus der DDR. Nach der Wende wurde dieser volkseigene Bestand in <a href="https://www.bundestag.de/resource/blob/411786/39a606ab924ddd68206f404cd68f5cb2/WD-1-059-07-pdf.pdf" target="_blank">kommunale Wohnungsgesellschaften</a> überführt, die Siedlungen der Arbeiterwohnungsbaugenossenschaften blieben genossenschaftlich. Die Altbauviertel der Innenstadt dagegen gehören vielfach Privatleuten, im Osten wurden viele Häuser nach 1990 an frühere Eigentümer zurückgegeben, saniert und verkauft. Hinzu kommt, dass Berlin selbst große Bestände privatisiert hat, 1998 die Gehag und 2004 die GSW, damals die größte landeseigene Wohnungsbaugesellschaft.  </p>
     </div>
 
-
-    <!-- ===================== TEXT ===================== -->
     <div class="container">
       <p class="paragraph">Für die Wohnungspolitik heißt das: Gerade in den dicht bewohnten Vierteln der Innenstadt, in denen die Angebotsmieten besonders hoch sind, besitzen gemeinwohlorientierte Eigentümer kaum Boden. Ändern soll das vor allem der Neubau. Laut dem <a href="https://www.berlin.de/sen/stadtentwicklung/planung/stadtentwicklungsplaene/step-wohnen-2040/" target="_blank">Stadtentwicklungsplan Wohnen 2040</a> soll möglichst jede zweite neue Wohnung gemeinwohlorientiert entstehen, und zwar verteilt über die ganze Stadt.</p>
     </div>
 
-    <!-- ===================== TEXT ===================== -->
     <div class="container">
       <p class="paragraph">Den größten Teil davon bauen die landeseigenen Gesellschaften, und ihre Planung zeichnet ein anderes Bild. Laut einem <a href="https://www.berlin.de/rbmskzl/aktuelles/pressemitteilungen/2024/pressemitteilung.1473923.php" target="_blank">Senatsbericht über die Neubauprojekte der Landeseigenen von 2024</a> sollen fast zwei Drittel ihrer geplanten Wohnungen in nur vier Bezirken im Osten entstehen: in Lichtenberg, Pankow, Marzahn-Hellersdorf und Treptow-Köpenick. Allein jede fünfte entfällt auf Lichtenberg, wo gemeinwohlorientierten Eigentümern schon heute 39 Prozent des Wohnbodens gehören. <a href="https://www.berlin.de/rbmskzl/aktuelles/pressemitteilungen/2025/pressemitteilung.1590906.php" target="_blank">Bausenator Christian Gaebler betont</a>, Berlin verfolge konsequent das Ziel, bezahlbare Wohnungen „in allen Teilen der Stadt" zu bauen. Doch es scheint als male der Neubau die blauen Flächen auf der Karte nur nach. Wo Berlin den Boden schon besitzt, kommt weiterer hinzu. Die Innenstadt bleibt voraussichtlich in privater Hand.</p>
     </div>
-
-
 
   </main>
 
@@ -527,12 +544,17 @@
           <p>Ein Vergleich der Eigentümerstruktur mit früheren Jahren wurde bewusst nicht gezogen, weil die Senatsverwaltung die Zuordnung der Eigentümer 2025 überarbeitet hat. </p>
         </div>
       </details>
+
+        <div class="credits">
+          <p>Thumbnail: <a href="https://commons.wikimedia.org/wiki/File:Wohnsiedlung-Wassertorplatz-Berlin-Kreuzberg-06-2017.jpg" target="_blank">„Wohnsiedlung Wassertorplatz, Berlin-Kreuzberg“</a> von Gunnar Klack, Wikimedia Commons, Lizenz: <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank">CC BY-SA 4.0</a>, zugeschnitten und freigestellt.</p>
+
+          <p>Inhalte dieses Artikels stehen unter der Lizenz <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.de" target="_blank">CC BY-ND 4.0</a> Analyse, Visualisierung und Text © LucaVellage</p>
+        </div>
     </section>
   </footer>
 
 
-  <!-- Datawrapper-Skript: passt die Höhe aller Karten automatisch an.
-       Wird nur EINMAL benötigt, egal wie viele Karten eingebunden sind. -->
+  <!-- Datawrapper-Skript: passt die Höhe aller Karten automatisch an -->
   <script>
     window.addEventListener("message", function (event) {
       var heights = event.data["datawrapper-height"];
